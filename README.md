@@ -1,9 +1,19 @@
-# Landing Page Project
+# Landing Page with Smooth Navigation
 
-## Instructions
+A dynamic landing page that features smooth scrolling, section highlighting, scroll-to-top functionality, and collapsible sections. It enhances user experience with interactive elements built using vanilla JavaScript.
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Features
 
-To get started, open `js/app.js` and start building out the app's functionality
+- Smooth scrolling between sections
+- Dynamic navigation menu
+- Active section highlighting on scroll
+- Scroll-to-top button
+- Collapsible sections
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Usage
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SaraMahran/landing-page-udacity.git
+   ```
+2. Open index.html in the browser to view the page.
