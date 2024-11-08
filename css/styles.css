@@ -74,6 +74,8 @@ main {
 section {
   position: relative;
   min-height: 80vh;
+  padding-top: 70px;
+  margin-top: -70px;
 }
 
 /* ---- Module Rules ---- */
@@ -114,7 +116,7 @@ section {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 5;
+  z-index: 10;
 }
 
 /* Footer Styles */
@@ -266,17 +268,12 @@ section.your-active-class .landing__container::after {
   opacity: 0;
   transition: opacity 0.3s;
   visibility: hidden;
+  z-index: 5;
 }
 
 #scroll-to-top.visible {
   opacity: 1;
   visibility: visible;
-}
-
-/* Hide navbar on idle */
-.navbar__menu.hidden {
-  opacity: 0;
-  transition: opacity 0.5s;
 }
 
 /* Collapsible sections */

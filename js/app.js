@@ -3,7 +3,6 @@
  */
 const sections = document.querySelectorAll("section");
 const navbarList = document.getElementById("navbar__list");
-let scrollTimeout; // To handle the scroll hiding
 
 /**
  * Helper Functions
@@ -49,32 +48,26 @@ function setActiveSection() {
 }
 
 // Scroll smoothly to section
+
 function scrollToSection(event) {
   event.preventDefault();
   if (event.target.nodeName === "A") {
     const sectionId = event.target.getAttribute("href").substring(1);
     const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: "smooth" });
+    const offsetTop = section.getBoundingClientRect().top + window.scrollY - 70; // Adjust this to match the navbar's height
+    window.scrollTo({ top: offsetTop, behavior: "smooth" });
   }
 }
 
 // Show scroll-to-top button when scrolling down
 function toggleScrollToTopButton() {
   const scrollButton = document.getElementById("scroll-to-top");
-  if (window.scrollY > window.innerHeight) {
+  if (window.scrollY > window.innerHeight / 2) {
+    // Lowered the threshold to half the viewport height
     scrollButton.classList.add("visible");
   } else {
     scrollButton.classList.remove("visible");
   }
-}
-
-// Hide navbar when not scrolling
-function hideNavbarOnIdle() {
-  document.querySelector(".navbar__menu").classList.remove("hidden");
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    document.querySelector(".navbar__menu").classList.add("hidden");
-  }, 2000);
 }
 
 // Scroll to top of page
@@ -101,7 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create scroll-to-top button
   const scrollToTopBtn = document.createElement("button");
   scrollToTopBtn.id = "scroll-to-top";
-  scrollToTopBtn.textContent = "Top";
+  // scrollToTopBtn.textContent = "Top";
+  scrollToTopBtn.innerHTML = "&#xf102;";
+  scrollToTopBtn.classList.add("fas", "fa-angle-double-up");
   scrollToTopBtn.addEventListener("click", scrollToTop);
   document.body.appendChild(scrollToTopBtn);
 });
@@ -113,7 +108,6 @@ navbarList.addEventListener("click", scrollToSection);
 window.addEventListener("scroll", () => {
   setActiveSection();
   toggleScrollToTopButton();
-  hideNavbarOnIdle();
 });
 
 // Toggle section collapse on header click
